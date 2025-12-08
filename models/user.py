@@ -9,7 +9,7 @@ class User:
     gender: str
     phone: str
     birth_day: str
-    birth_month_value: str
+    birth_month: str
     birth_year: str
     subject: str
     hobby: str

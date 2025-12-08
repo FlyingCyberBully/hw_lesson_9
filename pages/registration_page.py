@@ -1,5 +1,5 @@
 from pathlib import Path
-from selene import browser, have
+from selene import browser, have, command
 from models.user import User
 
 
@@ -20,8 +20,8 @@ class RegistrationPage:
         # Date of Birth
         browser.element('#dateOfBirthInput').click()
         browser.element('.react-datepicker__month-select').click()
-        browser.element(
-            f'.react-datepicker__month-select option[value="{user.birth_month_value}"]'
+        browser.element('.react-datepicker__month-select').all('option').element_by(
+            have.text(user.birth_month)
         ).click()
 
         browser.element('.react-datepicker__year-select').click()
@@ -35,6 +35,7 @@ class RegistrationPage:
         browser.element('#subjectsInput').type(user.subject).press_enter()
 
         # Hobby
+        browser.element("#hobbiesWrapper").perform(command.js.scroll_into_view)
         browser.all('[for^="hobbies-checkbox"]').element_by(have.text(user.hobby)).click()
 
         # Picture

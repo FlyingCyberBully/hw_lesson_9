@@ -11,7 +11,7 @@ def test_registration_high_level():
         gender='Male',
         phone='1234567890',
         birth_day='23',
-        birth_month_value='0',
+        birth_month='January',
         birth_year='1990',
         subject='Maths',
         hobby='Sports',
